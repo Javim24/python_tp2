@@ -2,10 +2,10 @@
     Cosas para hacer:
         *crear funcion para simular la noche de apuestas  --> HECHO
         *implementar un loop para simular cada apuesta de la noche --> HECHO
-        *simular cada apuesta con un valor aleatorio
+        *simular cada apuesta con un valor aleatorio        --> HECHO
         *terminar el loop si se cumplen 300 juegos o se queda sin fichas   --> HECHO
         *devolver cantidad de fichas  y número de juegos        --> HECHO
-        *hacer un loop para correr la función 20 veces
+        *hacer un loop para correr la función 20 veces          --> HECHO   
         *promediar los resultados
         *medir el tiempo que tarda en simularse cada noche e imprimirlo por pantalla
 """
@@ -33,10 +33,11 @@ def noche_de_apuestas(fichas, probabilidad, max_juegos):
             fichas += 1
         else:
             fichas -= 1
-        print(f"Apuesta N°: {contador_juegos}, tengo {fichas} fichas")
+        #print(f"Apuesta N°: {contador_juegos}, tengo {fichas} fichas")
         contador_juegos += 1
     return {"Num fichas" : fichas, "Num juegos" : contador_juegos}
 
 
-resultado =  noche_de_apuestas(50, 0.4, 300)
-print(resultado)
+for i in range(20):
+    resultado =  noche_de_apuestas(50, 0.4, 300)
+    print(resultado)
