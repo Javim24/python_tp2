@@ -10,6 +10,7 @@
         *medir el tiempo que tarda en simularse cada noche e imprimirlo por pantalla
 """
 import random
+import time
 
 def noche_de_apuestas(fichas, prob_ganar, max_juegos):
     """
@@ -37,9 +38,13 @@ def noche_de_apuestas(fichas, prob_ganar, max_juegos):
         contador_juegos += 1
     return {"Num fichas" : fichas, "Num juegos" : contador_juegos}
 
+
 media_apuestas = 0
 for i in range(20):
+    t_start = time.time()
     resultado =  noche_de_apuestas(50, 0.4, 300)
+    t_end = time.time()
+    print(f"La simulación tardó {t_end - t_start} segundos")
     media_apuestas += resultado["Num juegos"]
     print(resultado)
 media_apuestas /= 20
