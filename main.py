@@ -6,18 +6,18 @@
         *terminar el loop si se cumplen 300 juegos o se queda sin fichas   --> HECHO
         *devolver cantidad de fichas  y número de juegos        --> HECHO
         *hacer un loop para correr la función 20 veces          --> HECHO   
-        *promediar los resultados
+        *promediar los resultados           --> HECHO
         *medir el tiempo que tarda en simularse cada noche e imprimirlo por pantalla
 """
 import random
 
-def noche_de_apuestas(fichas, probabilidad, max_juegos):
+def noche_de_apuestas(fichas, prob_ganar, max_juegos):
     """
         Función que simula todas las apuestas de una noche.
 
         Entradas:
             fichas -> cantidad de fichas inicial que tiene el apostador
-            probabilidad -> probabilidad de ganar
+            prob_ganar -> probabilidad de ganar
             max_juegos -> número máximo de juegos en una noche
         
         Salidas:
@@ -28,16 +28,19 @@ def noche_de_apuestas(fichas, probabilidad, max_juegos):
 
     contador_juegos = 0
     while fichas > 0 and contador_juegos < max_juegos:
-        resultado = random.randint(0,1)
-        if resultado:
+        resultado = random.choices([0,1], weights=[1-prob_ganar, prob_ganar])
+        if resultado[0]:
             fichas += 1
         else:
             fichas -= 1
-        #print(f"Apuesta N°: {contador_juegos}, tengo {fichas} fichas")
+        #print(f"Apuesta N°: {contador_juegos + 1}, tengo {fichas} fichas")
         contador_juegos += 1
     return {"Num fichas" : fichas, "Num juegos" : contador_juegos}
 
-
+media_apuestas = 0
 for i in range(20):
     resultado =  noche_de_apuestas(50, 0.4, 300)
+    media_apuestas += resultado["Num juegos"]
     print(resultado)
+media_apuestas /= 20
+print(f"La media de la cantidad de apuestas es: {media_apuestas}")
