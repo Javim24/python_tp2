@@ -9,6 +9,7 @@
         *promediar los resultados
         *medir el tiempo que tarda en simularse cada noche e imprimirlo por pantalla
 """
+import random
 
 def noche_de_apuestas(fichas, probabilidad, max_juegos):
     """
@@ -27,12 +28,12 @@ def noche_de_apuestas(fichas, probabilidad, max_juegos):
 
     contador_juegos = 0
     while fichas > 0 and contador_juegos < max_juegos:
-        resultado = 1   #acá iría la parte de random
+        resultado = random.randint(0,1)
         if resultado:
             fichas += 1
         else:
             fichas -= 1
-        #print(f"Apuesta N°: {contador_juegos}, tengo {fichas} fichas")
+        print(f"Apuesta N°: {contador_juegos}, tengo {fichas} fichas")
         contador_juegos += 1
     return {"Num fichas" : fichas, "Num juegos" : contador_juegos}
 
